@@ -9,6 +9,10 @@ import { Connection } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
+import { ClientsModule } from './clients/clients.module';
+import { AccountsModule } from './accounts/accounts.module';
+import { PairingSessionsModule } from './pairing-sessions/pairing-sessions.module';
+import { TransactionsModule } from './transactions/transactions.module';
 
 @Module({
   imports: [
@@ -27,6 +31,10 @@ import { UsersModule } from './users/users.module';
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot(),
     UsersModule,
+    ClientsModule,
+    AccountsModule,
+    PairingSessionsModule,
+    TransactionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
