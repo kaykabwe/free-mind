@@ -1,16 +1,23 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
-export class PairingSession {
+export class PairingSession extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   clientId: number;
 
-  @Column('timestamp')
+  @CreateDateColumn()
   startDay: string;
 
-  @Column('timestamp')
+  @UpdateDateColumn()
   endDay: string;
 }
