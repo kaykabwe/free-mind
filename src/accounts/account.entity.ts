@@ -21,6 +21,6 @@ export class Account extends BaseEntity {
   @Column('money')
   balance: number;
 
-  @ManyToOne((type) => Client, (client) => client.accounts)
+  @ManyToOne(() => Client, (client) => client.accounts)
   client: Client;
 }

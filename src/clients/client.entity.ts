@@ -1,4 +1,5 @@
 import { Account } from 'src/accounts/account.entity';
+import { Transaction } from 'src/transactions/transaction.entity';
 import { User } from 'src/users/user.entity';
 import {
   BaseEntity,
@@ -32,6 +33,9 @@ export class Client extends BaseEntity {
   @Column({ length: 25 })
   occupation: string;
 
-  @OneToMany((type) => Account, (account) => account.client)
+  @OneToMany(() => Account, (account) => account.client)
   accounts: Account[];
+
+  @OneToMany(() => Transaction, (transaction) => transaction.client)
+  transactions: Transaction[];
 }
