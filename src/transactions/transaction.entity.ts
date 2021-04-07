@@ -29,7 +29,7 @@ export class Transaction extends BaseEntity {
   interestAmount: number;
 
   @ManyToOne(() => Client, (client) => client.transactions)
-  client: Client;
+  client?: Client;
 
   @ManyToOne(
     () => PairingSession,

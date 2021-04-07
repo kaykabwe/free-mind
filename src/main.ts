@@ -21,7 +21,7 @@ async function bootstrap() {
   // await app.listen(3000);
   // console.log(`Application is running on: ${await app.getUrl()}`);
   await app.listen(port);
-  Logger.log(`Server started running onhttp://localhost:${port}`, 'Bootstrap');
+  Logger.log(`Server started running on http://localhost:${port}`, 'Bootstrap');
 }
 
 bootstrap();

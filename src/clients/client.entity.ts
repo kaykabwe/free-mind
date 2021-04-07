@@ -16,7 +16,7 @@ export class Client extends BaseEntity {
   id: number;
 
   @ManyToOne(() => User, (user) => user.clients)
-  user: User; // foreign key
+  user?: User; // foreign key
 
   @Column('date', { nullable: true })
   date_of_birth: Date;
@@ -34,8 +34,8 @@ export class Client extends BaseEntity {
   occupation: string;
 
   @OneToMany(() => Account, (account) => account.client)
-  accounts: Account[];
+  accounts?: Account[];
 
   @OneToMany(() => Transaction, (transaction) => transaction.client)
-  transactions: Transaction[];
+  transactions?: Transaction[];
 }

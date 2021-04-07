@@ -22,5 +22,5 @@ export class Account extends BaseEntity {
   balance: number;
 
   @ManyToOne(() => Client, (client) => client.accounts)
-  client: Client;
+  client?: Client;
 }
