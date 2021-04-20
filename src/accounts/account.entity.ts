@@ -1,7 +1,14 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Client } from 'src/clients/client.entity';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
-export class Account {
+export class Account extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -13,4 +20,7 @@ export class Account {
 
   @Column('money')
   balance: number;
+
+  @ManyToOne(() => Client, (client) => client.accounts)
+  client?: Client;
 }

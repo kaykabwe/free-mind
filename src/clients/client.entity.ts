@@ -1,24 +1,25 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Account } from 'src/accounts/account.entity';
+import { Transaction } from 'src/transactions/transaction.entity';
+import { User } from 'src/users/user.entity';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
-export class Client {
+export class Client extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'char', length: 11 })
-  nrc: string;
+  @ManyToOne(() => User, (user) => user.clients)
+  user?: User; // foreign key
 
-  @Column({ length: 50 })
-  first_name: string;
-
-  @Column({ length: 50 })
-  middle_name: string;
-
-  @Column({ length: 50 })
-  last_name: string;
-
-  @Column('date')
-  date_of_birth: string;
+  @Column('date', { nullable: true })
+  date_of_birth: Date;
 
   @Column({ length: 13 })
   phone: string;
@@ -26,6 +27,15 @@ export class Client {
   @Column({ length: 300 })
   address: string;
 
+  @Column({ length: 300, nullable: true })
+  comments: string;
+
   @Column({ length: 25 })
   occupation: string;
+
+  @OneToMany(() => Account, (account) => account.client)
+  accounts?: Account[];
+
+  @OneToMany(() => Transaction, (transaction) => transaction.client)
+  transactions?: Transaction[];
 }
